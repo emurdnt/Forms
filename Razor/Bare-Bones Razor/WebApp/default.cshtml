@@ -1,0 +1,22 @@
+﻿@{ 
+    Page.Title = "My Razor Page";
+    Layout = "~/_Layout.cshtml"; //the ~ mean the root of the website
+}
+
+@section pagefooter{
+    <p>Today's date is @DateTime.Today.ToLongDateString().</p>
+    }
+
+@section head{
+    <style>
+        .page-header{
+            background-color:azure;
+        }
+    </style>
+    }
+
+<h1 class="page-header"> Welcome to @Page.Title</h1>
+
+<script>
+    alert('Your computer is infected');
+</script>
