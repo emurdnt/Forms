@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>@Page.Title</title>
-        <link href="~/Styles/site.css" rel="stylesheet" />
+        <link href="~/Styles/Site.css" rel="stylesheet" />
         @RenderSection("head", required: false)
     </head>
 <body>
@@ -16,8 +16,8 @@
         @RenderSection("pagefooter")
     </footer>
     <nav>
-        Future Menu
-        @RenderPage("~/_Menu.cshtml");
+        
+        @RenderPage("~/_Menu.cshtml")
     </nav>
 
 </body>
