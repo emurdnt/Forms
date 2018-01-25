@@ -55,33 +55,66 @@
     <section>
         <h1>Job Application</h1>
         <p>Please fill out the following form and click Submit to apply for the listed job(s).</p>
+            @{
+                //grab whatever values are in the Request name/value collection
 
-        <form action="JobApplication.html">
+                var name = Request["fullName"];
+                var email = Request["emailAddress"];
+                var phone = Request["phoneNumber"];
+                var workAmount = Request["fullOrPartTime"];
+                var workArea = Request["jobIn"] ?? string.Empty; //the 2 questionmarks null coalesing operator
+
+                if (IsPost)
+                {
+                    var submitAction = Request["submit"];
+                    switch (submitAction)
+                    {
+                        case "Submit":
+                            {
+                                //process the application
+                                <div>
+                                    <b> Thank you for your application.</b>
+                                </div>
+                                break;
+                            }
+                        case "Clear Form":
+                            {
+                                //empty out form
+                                name = email = phone = workAmount = workArea = string.Empty;
+                                break;
+                            }
+                    }
+                }
+
+            }
+        <form action="JobApplication.cshtml" method="post">
             <fieldset>
                 <legend>Application Form</legend>
                 <label for="fullName">Name</label>
-                <input name="fullName" type="text">
+                <input name="fullName" type="text" value="@name">
                 <label for="emailAddress">Email</label>
-                <input name="emailAddress" type="email">
+                <input name="emailAddress" type="email" value="@email">
                 <label for="phoneNumber">Phone</label>
-                <input name="phoneNumber" type="tel" pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Canadian/US Phone Number">
+                <input name="phoneNumber" type="tel" pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Canadian/US Phone Number" value="@phone">
                 <label for="fullOrPartTime">Full/Part Time</label>
                 <div class="inline-block">
-                    <input name="fullOrPartTime" type="radio" value="Full time">
+                    <input name="fullOrPartTime" type="radio" value="Full time" checked="@("Full time".Equals(workAmount))">
                     <label for="fullOrPartTime">Full time</label>
-                    <input name="fullOrPartTime" type="radio" value="Part time">
+                    <input name="fullOrPartTime" type="radio" value="Part time" checked="@("Part time".Equals(workAmount))">
                     <label for="fullOrPartTime_1">Part time</label>
                 </div>
                 <label for="jobIn">Jobs</label>
                 <div class="inline-block">
-                    <input type="checkbox" name="jobIn" value="Sales"><label for="jobInSales">Sales</label>
-                    <input type="checkbox" name="jobIn" value="Manufacturing"><label for="jobInManufacturing">Manufacturing</label>
-                    <input type="checkbox" name="jobIn" value="Accounting"><label for="jobInAccounting">Accounting</label>
-                    <input type="checkbox" name="jobIn" value="ShippingReceiving"><label for="jobInShippingReceiving">Shipping/Receiving</label>
+                    <input type="checkbox" name="jobIn" value="Sales" checked="@(workArea.Contains("Sales"))"><label for="jobInSales">Sales</label>
+                    <input type="checkbox" name="jobIn" value="Manufacturing" checked="@(workArea.Contains("Manufacturing"))"><label for="jobInManufacturing">Manufacturing</label>
+                    <input type="checkbox" name="jobIn" value="Accounting" checked="@(workArea.Contains("Accounting"))"><label for="jobInAccounting">Accounting</label>
+                    <input type="checkbox" name="jobIn" value="ShippingReceiving" checked="@(workArea.Contains("Shipping"))"><label for="jobInShippingReceiving">Shipping/Receiving</label>
+
                 </div>
             </fieldset>
             <input name="submit" type="submit" value="Submit">
             <input type="reset" value="Reset" />
+            <input name="submit" type="submit" value="Clear Form" />
         </form>
     </section>
 </body>
