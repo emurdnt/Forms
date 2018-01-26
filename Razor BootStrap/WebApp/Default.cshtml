@@ -2,8 +2,18 @@
 @{ 
     Layout = "~/_BootstrapLayout.cshtml";
 }
+<!-----if you recall, this pages will appear inside the following layout page:
 
-<div class="starter-template">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<div id="navbar" class="collapse navbar-collapse">
+    @RenderPage("~/_Menu.cshtml");
+</div><!--/.nav-collapse -->
+<div class="jumbotron">
+    <h1>Home Page</h1>
 </div>
+<div class="="row">
+  <div class="col-md-12">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+</div>
+
