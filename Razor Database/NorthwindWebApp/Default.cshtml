@@ -6,18 +6,20 @@
 <body>
     <h1>Razor Database</h1>
     @{
-        var northwindDB = WebMatrix.Data.Database.Open("NorthwindDB");
-        var results = northwindDB.Query("Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories");
+        var northwindDB=WebMatrix.Data.Database.Open("NorthwindDB");
+        var results=northwindDB.Query("Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories");
         foreach (var row in results)
         {
             <div>
-                @row.CategoryID, @row.CategoryName, @row.Description
+                @row.CategoryID,
+                <a href="~/ManageCategory.cshtml?catID=@row.CategoryId">@row.CategoryName</a>,
+                @row.Description
                 @if (row.Picture != null)
                 {
                     string base64String = Convert.ToBase64String(row.Picture);
                     var src = string.Format("data:{0};base64,{1}", row.PictureMimeType, base64String);
                     <text>
-                <img src="@src" width="75" />
+                        <img src="@src" width="75" />
                     </text>
                 }
             </div>

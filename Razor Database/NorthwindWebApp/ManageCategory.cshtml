@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+<body>
+    <h1>Manage Category</h1>
+    @{
+        string catName = Request["catName"] ?? string.Empty;
+        string catDescription = Request["catDescription"] ?? string.Empty;
+        string catId = Request["catId"] ?? string.Empty;
+        string submitType = Request["submitType"] ?? string.Empty;
+
+        var northwindDB = WebMatrix.Data.Database.Open("NorthwindDB");
+        //var results = northwindDB.Query("Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories");
+
+        //see if this is a post
+
+
+        if (IsPost)
+        {
+            switch (submitType)
+            {
+                case "Update":
+                    {
+                        string updateStatement = "UPDATE Categories SET CategoryName=@0, Description=@1 WHERE CategoryId=@2";
+                        int rowsAffected = northwindDB.Execute(updateStatement, catName, catDescription, catId);
+                        if (rowsAffected == 0)
+                        {
+                            <div>Update failed, try again or cancel.</div>
+                        }
+                        else
+                        {
+                            <div>Update successful.</div>
+                        }
+
+                        break;
+                    }
+                case "Delete":
+                    {
+                        string DeleteStatement = "DELETE from Categories WHERE CategoryId=@0";
+                        int rowsAffected1 = northwindDB.Execute(DeleteStatement,catId);
+                        if (rowsAffected1 == 0)
+                        {
+                            <div>delete failed, try again or cancel.</div>
+                        }
+                        else
+                        {
+                            <div>Delete successful.</div>
+                        }
+                        break;
+                    }
+                case "Cancel":
+                    {
+                        Response.Redirect("~", true);
+                        break;
+                    }
+                default:
+                    {
+                        <div>WTF == "What's That For?"</div>
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            int categoryId;
+            if (int.TryParse(catId, out categoryId))
+            {
+                string query = "Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories WHERE CategoryID =@0";
+                var results = northwindDB.QuerySingle(query, catId);
+                if (results == null)
+                {
+                    <div> No such category found for ID @catId.</div>;
+                }
+                else
+                {
+                    catName = results.CategoryName;
+                    catDescription = results.Description;
+                }
+
+            }
+
+
+        }
+
+    }
+    <form method="post">
+        <label>Name</label>
+        <input name="catName" type="text" value="@catName" />
+        <br />
+        <label>Description</label>
+        <input name="catDescription" type="text" value="@catDescription" />
+        <br />
+        <label>Picture</label>
+        <input name="catPic" type="file" value="" />
+        <br />
+        <input name="submitType" type="submit" value="Update" />
+        <input name="submitType" type="submit" value="Delete" />
+        <input name="submitType" type="submit" value="Cancel" />
+        <input name="catId" type="hidden" value="@catId" />
+    </form>
+</body>
+</html>
