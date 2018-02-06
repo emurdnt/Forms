@@ -8,7 +8,8 @@
     @{
         var northwindDB = WebMatrix.Data.Database.Open("NorthwindDB");
         var results = northwindDB.Query("Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories");
-        foreach (var row in results)
+        //results are like an array of rows in your database
+        foreach (var row in results) //if results IEnumerable <dynamic> then the DT of row is dynamic.
         {
             <div>
                 @row.CategoryID, @row.CategoryName, @row.Description
@@ -17,8 +18,8 @@
                     string base64String = Convert.ToBase64String(row.Picture);
                     var src = string.Format("data:{0};base64,{1}", row.PictureMimeType, base64String);
                     <text>
-                <img src="@src" width="75" />
-                    </text>
+                <img src="@src" />
+                    </text> //text switches you back from c# to HTML
                 }
             </div>
         }
