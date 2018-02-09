@@ -10,6 +10,9 @@
         string catDescription = Request["catDescription"] ?? string.Empty;
         string catId = Request["catId"] ?? string.Empty;
         string submitType = Request["submitType"] ?? string.Empty;
+        HttpPostedFileBase catPic = null;
+        string mimeType = null; // use this for insert update, as well as display
+        byte[] catPicBytes = null;
 
         var northwindDB = WebMatrix.Data.Database.Open("NorthwindDB");
         //var results = northwindDB.Query("Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories");
@@ -19,12 +22,24 @@
 
         if (IsPost)
         {
+            //see if an image was included in the POSTED form data
+            if (Request.Files.Count > 0)//file upload
+            {
+                catPic = Request.Files[0];
+                //string fileName = Path.GetFileName(catPic.FileName);
+                mimeType = catPic.ContentType;
+                catPicBytes = new byte[catPic.ContentLength];
+                catPic.InputStream.Read(catPicBytes, 0, catPic.ContentLength);
+
+
+            } //end of file upload
             switch (submitType)
             {
                 case "Update":
                     {
-                        string updateStatement = "UPDATE Categories SET CategoryName=@0, Description=@1 WHERE CategoryId=@2";
-                        int rowsAffected = northwindDB.Execute(updateStatement, catName, catDescription, catId);
+
+                        string updateStatement = "UPDATE Categories SET CategoryName=@0, Description=@1, Picture = @2, PictureMimeType=@3 WHERE CategoryId=@4";
+                        int rowsAffected = northwindDB.Execute(updateStatement, catName, catDescription, catPicBytes, mimeType, catId);
                         if (rowsAffected == 0)
                         {
                             <div>Update failed, try again or cancel.</div>
@@ -36,10 +51,19 @@
 
                         break;
                     }
+                case "Add":
+                    {
+                        string insertStatement = "INSERT into Categories (CategoryName, Description, Picture, PictureMimeType) VALUES (@0, @1,@2, @3)";
+                        northwindDB.Execute(insertStatement, catName, catDescription, catPicBytes, mimeType);
+                        var newID = northwindDB.QueryValue("SELECT SCOPE_IDENTITY()");
+                        catId = newID.ToString();
+
+                        break;
+                    }
                 case "Delete":
                     {
                         string DeleteStatement = "DELETE from Categories WHERE CategoryId=@0";
-                        int rowsAffected1 = northwindDB.Execute(DeleteStatement,catId);
+                        int rowsAffected1 = northwindDB.Execute(DeleteStatement, catId);
                         if (rowsAffected1 == 0)
                         {
                             <div>delete failed, try again or cancel.</div>
@@ -62,11 +86,13 @@
                     }
             }
         }
-        else
+        else //this is a get request aka just loading the page
         {
             int categoryId;
             if (int.TryParse(catId, out categoryId))
             {
+                //reading the data from the database to display it
+                //0 is a placeholder to avoid SQL injections
                 string query = "Select CategoryID, CategoryName, Description, Picture, PictureMimeType from Categories WHERE CategoryID =@0";
                 var results = northwindDB.QuerySingle(query, catId);
                 if (results == null)
@@ -77,6 +103,8 @@
                 {
                     catName = results.CategoryName;
                     catDescription = results.Description;
+                    catPicBytes = results.Picture;
+                    mimeType = results.pictureMimeType;
                 }
 
             }
@@ -85,7 +113,11 @@
         }
 
     }
-    <form method="post">
+    <!--When your form will have an input type = "file" then you will need to have
+        the ENCTYPE *ENCODING Type* attribute in your form element.
+        - enctype="multipart/form-data"
+        No characters are encoded. this value is required when using forms with file uploads.-->
+    <form method="post" enctype="multipart/form-data">
         <label>Name</label>
         <input name="catName" type="text" value="@catName" />
         <br />
@@ -94,11 +126,34 @@
         <br />
         <label>Picture</label>
         <input name="catPic" type="file" value="" />
+        @if (catPicBytes != null)
+            {
+                string base64String = Convert.ToBase64String(catPicBytes);
+                string imageSrc = string.Format("data:{0};base64,{1}", mimeType, base64String);
+            <text>
+
+                <img src="@imageSrc" width="75" />
+            </text>
+
+        }
         <br />
-        <input name="submitType" type="submit" value="Update" />
-        <input name="submitType" type="submit" value="Delete" />
+
+        @if (string.IsNullOrWhiteSpace(catId))
+            {
+            <input name="submitType" type="submit" value="Add" />
+        }
+        else
+        {
+            <input name="submitType" type="submit" value="Update" />
+                <input name="submitType" type="submit" value="Delete" />
+        }
+
+
         <input name="submitType" type="submit" value="Cancel" />
         <input name="catId" type="hidden" value="@catId" />
+
+
     </form>
 </body>
+
 </html>
