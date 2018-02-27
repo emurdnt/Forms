@@ -4,13 +4,21 @@
 
     <div class="jumbotron">
         <h1>ASP.NET</h1>
-        <asp:Label ID="MessageLabel" runat="server"/>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+      <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+         <div class="col-md-3">
+             <asp:Label ID="MessageLabel" runat="server"/>
+         <asp:TextBox ID="UserReply" runat="server"/>
+         <asp:LinkButton ID="RespondToUser" runat="server" Text="Tell me something" OnClick="RespondToUser_Click"/>
+        
+             <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+        
+        </div>
+        <div class="col-md-3">
             <h2>Getting started</h2>
             <p>
                 ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
@@ -20,7 +28,7 @@
                 <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
             </p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h2>Get more libraries</h2>
             <p>
                 NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
@@ -29,7 +37,7 @@
                 <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
             </p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h2>Web Hosting</h2>
             <p>
                 You can easily find a web hosting company that offers the right mix of features and price for your applications.
