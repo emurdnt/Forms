@@ -11,7 +11,7 @@ namespace WebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.MessageLabel.Text = "Hello Webforms";
         }
     }
 }
