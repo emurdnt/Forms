@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="false" Inherits="FormSamples_CreateBankAccount" Codebehind="CreateBankAccount.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" Inherits="FormSamples_CreateBankAccount" Codebehind="CreateBankAccount.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="page-header">
@@ -42,6 +42,7 @@
         </div>
         <div class="col-md-6">
             <asp:Label ID="MessageLabel" runat="server" />
+            <asp:GridView ID="BankAccountGridView" runat="server" EmptyDataText="No bank accounts entered."></asp:GridView>
             <div>
                 <%--Validation Controls--%>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning alert-dismissible" HeaderText="Please fix the following problems before sumitting this form." />

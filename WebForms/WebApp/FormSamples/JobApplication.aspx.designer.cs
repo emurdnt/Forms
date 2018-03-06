@@ -138,6 +138,60 @@ public partial class FormSamples_JobApplication {
     protected global::System.Web.UI.WebControls.Button Submit;
     
     /// <summary>
+    /// ValidationSummary1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+    
+    /// <summary>
+    /// ValidatetName control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidatetName;
+    
+    /// <summary>
+    /// ValidateEmail control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidateEmail;
+    
+    /// <summary>
+    /// ValidatePhoneNumber control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidatePhoneNumber;
+    
+    /// <summary>
+    /// ValidatePhoneNumberFormat control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidatePhoneNumberFormat;
+    
+    /// <summary>
+    /// ValidateStatus control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidateStatus;
+    
+    /// <summary>
     /// MessageLabel control.
     /// </summary>
     /// <remarks>

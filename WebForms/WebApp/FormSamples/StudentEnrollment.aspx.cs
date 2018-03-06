@@ -44,7 +44,11 @@ partial class FormSamples_StudentEnrollment
             newStudent.LastName = LastName.Text;
             newStudent.MiddleName = MiddleName.Text;
             newStudent.SIN = long.Parse(SocialInsuranceNumber.Text);
-            newStudent.DOB = DateTime.Parse(DateOfBirth.Text);
+            DateTime temp;
+            if(DateTime.TryParse(DateOfBirth.Text, out temp))
+            {
+                newStudent.DOB = temp;
+            }
             newStudent.StudyProgram = ProgramOfStudy.SelectedValue;
             newStudent.SchoolYear = int.Parse(SchoolYear.SelectedValue);
 

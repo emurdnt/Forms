@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="false" Inherits="FormSamples_JobApplication" Codebehind="JobApplication.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" Inherits="FormSamples_JobApplication" Codebehind="JobApplication.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="page-header">
@@ -51,9 +51,22 @@
             <p>
                 <asp:Button ID="Submit" runat="server" Text="Submit" />
             </p>
+            <div>
+                 <div>
+                <%--Validation Controls--%>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server"  HeaderText="Please fix the following problems before sumitting this form." />
+                <asp:RequiredFieldValidator ID="ValidatetName" runat="server" Display="None" ControlToValidate="FullName" ErrorMessage="Name is required."/>
+                <asp:RegularExpressionValidator ID="ValidateEmail" runat="server" Display="None" ControlToValidate="EmailAddress" ErrorMessage="Invalid email format!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+                <asp:RequiredFieldValidator ID="ValidatePhoneNumber" runat="server" Display="None" ControlToValidate="PhoneNumber" ErrorMessage="Phone number is required."/>
+                <asp:RegularExpressionValidator ID="ValidatePhoneNumberFormat" runat="server" Display="None" ControlToValidate="PhoneNumber" ErrorMessage="Invalid phone number format!" ValidationExpression="\(\d{3}\)?\s\d{3}-\d{4"/>
+                <asp:RequiredFieldValidator ID="ValidateStatus" runat="server" Display="None" ControlToValidate="FullOrPartTime" ErrorMessage="Status is required."/>
+              
+            </div>
+            </div>
         </div>
         <div class="col-md-6">
             <asp:Label ID="MessageLabel" runat="server" />
+
             <p>Apply the following validation rules:</p>
             <ul>
                 <li>Name is required.</li>
