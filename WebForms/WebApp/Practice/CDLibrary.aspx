@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"  Codebehind="CDLibrary.aspx.cs" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CDLibrary.aspx.cs" Inherits="WebApp.Practice.CDLibrary" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"> 
   
