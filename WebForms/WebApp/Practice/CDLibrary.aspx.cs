@@ -15,12 +15,12 @@ namespace WebApp.Practice
         {
             if (!IsPostBack)
             {
-                // Tell my GridView to get its data from the Registrations field.
-                //MusicGridView.DataSource = MusicCollection;
-                //// Tell my GridView to loop through the Data and populate the GridView.
-                //MusicGridView.DataBind();
+                //Tell my GridView to get its data from the Registrations field.
+               MusicGridView.DataSource = MusicCollection;
+                // Tell my GridView to loop through the Data and populate the GridView.
+                MusicGridView.DataBind();
 
-              
+
             }
         }
     }
