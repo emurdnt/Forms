@@ -18,5 +18,30 @@ namespace WebApp.Practice
             MusicGridView.DataSource = Playlist;
             MusicGridView.DataBind();
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                MessageLabel.Text = "CD added to the playlist.";
+                // pull information from the form, and create a Registration object
+
+                Music newMusic = new Music();
+                newMusic.ISBN = long.Parse( Barcode.Text);
+                newMusic.Artist = Artist.Text;
+                newMusic.Title = CDTitle.Text;
+                newMusic.Year = int.Parse(Year.Text);
+                newMusic.NumberOfTracks = int.Parse(NumberOfTracks.Text);
+                
+
+                // Add the student to the list'
+                Playlist.Add(newMusic);
+
+                // Show the data in the GridView
+                MusicGridView.DataSource = Playlist;
+                MusicGridView.DataBind();
+
+            }
+        }
     }
 }

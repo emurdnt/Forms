@@ -13,6 +13,15 @@ namespace WebApp.Practice {
     public partial class CDLibrary {
         
         /// <summary>
+        /// MessageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MessageLabel;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -166,13 +175,13 @@ namespace WebApp.Practice {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// RangeValidator2 control.
+        /// ValidateNumberOfTracks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator2;
+        protected global::System.Web.UI.WebControls.CompareValidator ValidateNumberOfTracks;
         
         /// <summary>
         /// MusicGridView control.
