@@ -9,7 +9,7 @@
 
 
 
-public partial class  {
+public partial class Practice_CDLibrary {
     
     /// <summary>
     /// Label1 control.
