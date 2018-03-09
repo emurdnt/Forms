@@ -24,21 +24,30 @@ partial class FormSamples_CreateBankAccount
     }
     protected void Submit_Click(object sender, EventArgs e)
     {
+        //validation on the server side
         if (IsValid) // IsValid is a property on the page that checks with the validation controls to ensure that the data in the controls passes all the validation.
         {
-            MessageLabel.Text = "Your new bank account will be processed soon.";
-            BankAccount data = new BankAccount
-            //the following is an initializer list
+            if (IsDuplicate())
             {
-                AccountHolder = AccountHolder.Text,
-                AccountNumber = long.Parse(AccountNumber.Text),
-                OpeningBalance = decimal.Parse(OpeningBalance.Text),
-                AccountType = AccountType.Text
-            };
+                MessageLabel.Text = "That account number has already been taken.";
+            }
+            else
+            {
+                MessageLabel.Text = "Your new bank account will be processed soon.";
+                BankAccount data = new BankAccount
+                //the following is an initializer list
+                {
+                    AccountHolder = AccountHolder.Text,
+                    AccountNumber = long.Parse(AccountNumber.Text),
+                    OpeningBalance = decimal.Parse(OpeningBalance.Text),
+                    AccountType = AccountType.Text
+                };
 
-            BankAccounts.Add(data);
-            BankAccountGridView.DataSource = BankAccounts;
-            BankAccountGridView.DataBind();
+                BankAccounts.Add(data);
+                BankAccountGridView.DataSource = BankAccounts;
+                BankAccountGridView.DataBind();
+
+            }
 
         }
         // else....
@@ -56,5 +65,19 @@ partial class FormSamples_CreateBankAccount
         // (Alternatively, I could have changed the .SelectedIndex instead)
         AccountType.SelectedIndex = -1; // -1, just in case there are no items in the control
 
+    }
+
+    private bool IsDuplicate()
+    {
+        bool duplicate = false;
+        foreach (var item in BankAccounts)
+        {
+            if (item.AccountNumber == long.Parse(AccountNumber.Text))
+            {
+                duplicate = true;
+            }
+        }
+
+        return duplicate;
     }
 }
