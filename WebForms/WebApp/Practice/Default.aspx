@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" Inherits="Practice_Default" Codebehind="Default.aspx.cs" %>
+﻿<%@ Page Title="Default" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" Inherits="Practice_Default" Codebehind="Default.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="page-header">
@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <img class="img-responsive img-thumbnail" src="../Images/CD%20Library.png" /></div>
+           <a href="CDLibrary.aspx"> <img class="img-responsive img-thumbnail" src="../Images/CD%20Library.png" /></a></div>
         <div class="col-md-12">
             <img class="img-responsive img-thumbnail" src="../Images/Movie%20Library.png" /></div>
         <div class="col-md-12">
