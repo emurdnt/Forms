@@ -1,0 +1,12 @@
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\ServerSide.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\ServerSide.pdb
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\DataEntities.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\DataEntities.pdb
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\obj\Debug\ServerSide.csprojResolveAssemblyReference.cache
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\obj\Debug\ServerSide.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\obj\Debug\ServerSide.pdb
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\ServerSide.dll.config
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\EntityFramework.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\EntityFramework.xml
+C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\ServerSide\bin\Debug\EntityFramework.SqlServer.xml
