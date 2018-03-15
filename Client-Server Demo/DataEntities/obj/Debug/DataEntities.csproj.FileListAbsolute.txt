@@ -3,3 +3,8 @@ C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\bin\D
 C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\obj\Debug\DataEntities.csprojResolveAssemblyReference.cache
 C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\obj\Debug\DataEntities.dll
 C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\obj\Debug\DataEntities.pdb
+C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\bin\Debug\DataEntities.dll.config
+C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\bin\Debug\EntityFramework.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\bin\Debug\EntityFramework.xml
+C:\Users\eurdaneta1\Documents\GitHub\Forms\Client-Server Demo\DataEntities\bin\Debug\EntityFramework.SqlServer.xml
