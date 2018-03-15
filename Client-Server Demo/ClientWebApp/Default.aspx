@@ -11,7 +11,9 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Code Demos</h2>
-            <asp:GridView ID="CodeDemoGridView" runat="server" CssClass="table"></asp:GridView>
+            <asp:GridView ID="CodeDemoGridView" runat="server" CssClass="table" EmptyDataText="No data available.">
+                <EmptyDataTemplate><i>Can be a mark-up or a page link.</i></EmptyDataTemplate>
+            </asp:GridView>
         </div>
         <div class="col-md-4">
             <h2>Get more libraries</h2>
