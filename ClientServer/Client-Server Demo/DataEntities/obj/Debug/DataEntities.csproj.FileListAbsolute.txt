@@ -1,5 +1,0 @@
-C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\DataEntities\bin\Debug\DataEntities.dll
-C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\DataEntities\bin\Debug\DataEntities.pdb
-C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\DataEntities\obj\Debug\DataEntities.csprojResolveAssemblyReference.cache
-C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\DataEntities\obj\Debug\DataEntities.dll
-C:\Users\eurdaneta1\Documents\GitHub\Forms\ClientServer\Client-Server Demo\DataEntities\obj\Debug\DataEntities.pdb
