@@ -14,12 +14,12 @@ namespace ClientWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 PopulateGridView();
             }
 
-            MessageLabel.Text = string.Empty;
+            MessageLabel.Text = string.Empty; // Clear out the message each time
         }
 
         private void PopulateGridView()
@@ -34,12 +34,9 @@ namespace ClientWebApp
             try
             {
                 var data = new CodeDemo();
-                data.Name = DemoName.Text; //grabbed the data frm the form into an object
-
+                data.Name = DemoName.Text; // Grab the name from the form & put in object
                 if (!string.IsNullOrWhiteSpace(Description.Text))
-                {
                     data.Description = Description.Text;
-                }
 
                 var controller = new CodeDemoController();
                 controller.AddDemo(data);
@@ -48,38 +45,34 @@ namespace ClientWebApp
             catch (Exception ex)
             {
                 Exception inner = ex;
-                //this next statement drills down on the details of the exception
-                while(inner.InnerException != null)
-                {
+                // this next statement drills down on the details of the exception
+                while (inner.InnerException != null)
                     inner = inner.InnerException;
-                }
                 string message;
-                if(inner is DbEntityValidationException)
+                if (inner is DbEntityValidationException)
                 {
                     message = ExtractValidationErrorDetails(inner as DbEntityValidationException);
                 }
                 else
-                {
                     message = inner.Message;
-                    MessageLabel.Text = message;
-                }
-              
+                MessageLabel.Text = message;
             }
-           
         }
 
-        private string ExtractValidationErrorDetails (DbEntityValidationException ex)
+        private string ExtractValidationErrorDetails(DbEntityValidationException ex)
         {
             string details = "";
-            foreach(var entityObj in ex.EntityValidationErrors)
+
+            foreach (var entityObj in ex.EntityValidationErrors)
             {
                 details += $"<p>Entity of type {entityObj.Entry.Entity.GetType().Name} in state {entityObj.Entry.State} has the following errors: <ul>";
-                foreach (var error in entityObj.ValidationErrors)
+                foreach (var err in entityObj.ValidationErrors)
                 {
-                    details += $"<li> Property: {error.PropertyName} - Error: {error.ErrorMessage}</li>";
+                    details += $"<li>Property: {err.PropertyName} - Error: {err.ErrorMessage}</li>";
                 }
                 details += "</ul></p>";
             }
+
             return details;
         }
     }
