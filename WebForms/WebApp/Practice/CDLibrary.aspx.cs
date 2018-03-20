@@ -10,7 +10,7 @@ namespace WebApp.Practice
 {
     public partial class CDLibrary : System.Web.UI.Page
     {
-        private static List<Music> Playlist =
+       private static List<Music> Playlist =
        new List<Music>();
 
         protected void Page_Load(object sender, EventArgs e)
